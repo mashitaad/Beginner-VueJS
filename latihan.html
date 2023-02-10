@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Vue Beginner</title>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <style>
+      body {
+        margin: 5%;
+        font-family: 'Quicksand', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <img src="image/logo.png" width="80">
+        <h1>{{ bilangan }}</h1>
+        <p>Bilangan ini adalah bilangan {{infoBilangan}}</p>
+        <p>The Progressive Javascript Framework</p>
+      </header>
+
+      <footer id="footer">
+        <p>copyright 2023</p>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script> -->
+    <script>
+      const member = {
+        name: 'Mashita Dewi',
+        message: "Hello World!",
+        qty: 2,
+        frontName: 'Mashita',
+        backName: ' Dewi',
+        bilangan: 3
+      }
+
+      const vm = new Vue({
+        el: '#app',
+        data: member,
+        methods: {
+          getname: function() {
+            return 'Hello, ' +this.name
+          },
+          changename: function(newName) {
+            this.name = newName
+          }
+        },
+        //nilai propertynya tergantung pada nilai property lain
+        computed: {
+          sumPay: function(){
+            return this.qty * 1000
+          },
+          completeName: function(){
+            return this.frontName + this.backName
+          },
+          infoBilangan: function(){
+            return this.bilangan%2 === 0 ? 'Genap' : 'Ganjil'
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
